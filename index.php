@@ -1,32 +1,17 @@
 <?php
+/**
+ * Front to the WordPress application. This file doesn't do anything, but loads
+ * wp-blog-header.php which does and tells WordPress to load the theme.
+ *
+ * @package WordPress
+ */
 
-get_header(); ?>
+/**
+ * Tells WordPress to load the WordPress theme and output it.
+ *
+ * @var bool
+ */
+define('WP_USE_THEMES', true);
 
-	<!-- site-content -->
-	<div class="site-content clearfix">
-
-		<!-- main-column -->
-		<div class="main-column">
-
-			<?php if (have_posts()) :
-				while (have_posts()) : the_post();
-
-				get_template_part('content', get_post_format());
-
-				endwhile;
-
-				else :
-					echo '<p>No content found</p>';
-
-				endif;
-				?>
-
-		</div><!-- /main-column -->
-
-		<?php get_sidebar(); ?>
-
-	</div><!-- /site-content -->
-
-	<?php get_footer();
-
-?>
+/** Loads the WordPress Environment and Template */
+require( dirname( __FILE__ ) . '/wp-blog-header.php' );
